@@ -163,6 +163,9 @@ func main() {
 	cmd.Dir = dir
 	outb, err = cmd.CombinedOutput()
 	if cleanup != "" {
+		if *flagVerbose {
+			log.Printf("rm %v", cleanup)
+		}
 		os.Remove(cleanup)
 	}
 	out := string(outb)
