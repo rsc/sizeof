@@ -162,7 +162,7 @@ func main() {
 	cmd = exec.Command("go", args...)
 	cmd.Dir = dir
 	outb, err = cmd.CombinedOutput()
-	if false && cleanup != "" {
+	if cleanup != "" {
 		os.Remove(cleanup)
 	}
 	out := string(outb)
@@ -192,7 +192,7 @@ func main() {
 		// Parse go_asm.h file left in work directory.
 		hdr := workdir + "/" + pkg + "/_obj/go_asm.h"
 		data, err = ioutil.ReadFile(hdr)
-		//os.RemoveAll(workdir)
+		os.RemoveAll(workdir)
 	} else {
 		// Parse go_asm.h file written to f.
 		data, err = ioutil.ReadFile(tmp.Name())
